@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Osama UTM Generator</title>
+  <meta name="description" content="Lean UTM generator for Osama / Atmata launch links." />
+  <style>
+    :root{--bg:#08101c;--panel:#0f1b2d;--card:#13243b;--muted:#9fb2ce;--text:#f6f9ff;--line:rgba(255,255,255,.12);--blue:#55b7ff;--green:#45d483;--warn:#ffd166;--red:#ff7b8a;--shadow:0 24px 80px rgba(0,0,0,.36);--r:22px}
+    *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 20% -10%,rgba(85,183,255,.28),transparent 30%),linear-gradient(180deg,#08101c,#070b12 70%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;min-height:100vh} a{color:inherit}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.hero{padding:42px 0 24px}.top{display:flex;justify-content:space-between;gap:16px;align-items:center}.brand{display:flex;gap:12px;align-items:center}.mark{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--blue),#1d67ff);display:grid;place-items:center;font-weight:900;color:white;box-shadow:0 14px 36px rgba(85,183,255,.28)}h1{font-size:clamp(34px,5vw,72px);line-height:.98;margin:28px 0 12px;letter-spacing:-.055em;max-width:850px}.lead{max-width:760px;color:var(--muted);font-size:18px;line-height:1.65}.grid{display:grid;grid-template-columns:410px 1fr;gap:18px;align-items:start;padding-bottom:50px}.panel,.output{background:rgba(15,27,45,.84);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}.panel{padding:18px;position:sticky;top:16px}.output{padding:18px}.section{padding:14px 0;border-top:1px solid var(--line)}.section:first-child{border-top:0;padding-top:0}label{font-size:13px;color:#dceaff;font-weight:800;margin:0 0 8px;display:block}.help{font-size:12px;color:var(--muted);line-height:1.5;margin-top:6px}input,select,textarea{width:100%;background:#081421;border:1px solid var(--line);border-radius:14px;color:var(--text);padding:12px 13px;font-size:14px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(85,183,255,.14)}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.chips{display:grid;gap:8px}.chip{display:flex;gap:10px;align-items:flex-start;padding:11px;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:14px;cursor:pointer}.chip:hover{background:rgba(255,255,255,.06)}.chip input{width:auto;margin-top:2px}.chip b{display:block;font-size:13px}.chip span{display:block;font-size:12px;color:var(--muted);line-height:1.35}.group-title{display:flex;align-items:center;justify-content:space-between;margin:12px 0 8px}.group-title h3{font-size:14px;margin:0}.smallbtn,.primary{border:0;border-radius:999px;font-weight:900;cursor:pointer}.smallbtn{padding:8px 10px;background:rgba(255,255,255,.08);color:#dceaff}.primary{width:100%;padding:14px;background:linear-gradient(135deg,var(--blue),#2377ff);color:white;margin-top:10px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.stat{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:16px;padding:13px}.stat b{font-size:22px}.stat span{display:block;color:var(--muted);font-size:12px}.notice{border:1px solid rgba(255,209,102,.35);background:rgba(255,209,102,.08);border-radius:16px;padding:12px;color:#ffe6a3;font-size:13px;line-height:1.55;margin-bottom:14px}.result{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:18px;padding:14px;margin:10px 0}.result-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.badge{font-size:11px;border:1px solid var(--line);padding:5px 8px;border-radius:999px;color:#cde7ff;background:rgba(85,183,255,.1)}.url{direction:ltr;background:#050b13;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:12px;color:#cce8ff;word-break:break-all;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;margin:10px 0}.actions{display:flex;gap:8px;flex-wrap:wrap}.copy{border:0;border-radius:999px;background:#eaf6ff;color:#061328;font-weight:900;padding:9px 12px;cursor:pointer}.ghost{border:1px solid var(--line);border-radius:999px;background:transparent;color:#dceaff;font-weight:800;padding:9px 12px;cursor:pointer}.why{color:var(--muted);font-size:12px;line-height:1.45;margin-top:8px}.empty{text-align:center;color:var(--muted);padding:70px 20px}.footer-note{color:var(--muted);font-size:12px;line-height:1.6;margin-top:14px}.rtl{direction:rtl;font-family:"IBM Plex Sans Arabic",Tahoma,Arial,sans-serif}@media(max-width:900px){.grid{grid-template-columns:1fr}.panel{position:relative;top:0}.summary{grid-template-columns:repeat(2,1fr)}.top{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header class="wrap hero">
+    <div class="top"><div class="brand"><div class="mark">UTM</div><div><strong>Atmata Link Builder</strong><div class="help">Consistent tracking links for Osama’s funnel</div></div></div><button class="smallbtn" id="copyAllTop">Copy all links</button></div>
+    <h1>Generate the right tracked link for every placement.</h1>
+    <p class="lead">Pick multiple placements, add a campaign/content label, then copy clean links for YouTube bio, video descriptions, pinned comments, Kit emails, WhatsApp, Skool, or direct social links.</p>
+  </header>
+
+  <main class="wrap grid">
+    <aside class="panel">
+      <div class="section">
+        <label for="baseUrl">Destination URL</label>
+        <input id="baseUrl" value="https://osama-alkalthami.com/application" />
+        <div class="help">Use the application page for buyer attribution. If a social post only points to YouTube, use YouTube analytics for that first hop.</div>
+      </div>
+      <div class="section row">
+        <div><label for="campaign">Campaign</label><input id="campaign" value="atmtha_sep_launch" /></div>
+        <div><label for="contentLabel">Content label</label><input id="contentLabel" value="channel_bio" /></div>
+      </div>
+      <div class="section row">
+        <div><label for="videoLabel">Video/topic label</label><input id="videoLabel" placeholder="video_id_or_topic" /></div>
+        <div><label for="emailNo">Email number</label><input id="emailNo" placeholder="01" /></div>
+      </div>
+      <div class="section">
+        <label for="customTerm">Optional keyword / audience</label>
+        <input id="customTerm" placeholder="e.g. employees, managers, ai_workflow" />
+      </div>
+      <div class="section">
+        <div class="group-title"><h3>Recommended core placements</h3><button class="smallbtn" data-select="core">Select core</button></div>
+        <div class="chips" id="corePlacements"></div>
+      </div>
+      <div class="section">
+        <div class="group-title"><h3>Extra placements</h3><button class="smallbtn" data-select="extra">Select extra</button></div>
+        <div class="chips" id="extraPlacements"></div>
+      </div>
+      <button class="primary" id="generateBtn">Generate links</button>
+      <div class="footer-note">Logic: <b>utm_source</b> is the platform where the click happens. <b>utm_medium</b> is the placement type. <b>utm_content</b> identifies the exact post/video/email.</div>
+    </aside>
+
+    <section class="output">
+      <div class="summary">
+        <div class="stat"><b id="countLinks">0</b><span>links</span></div>
+        <div class="stat"><b id="countSources">0</b><span>sources</span></div>
+        <div class="stat"><b id="campaignStat">—</b><span>campaign</span></div>
+        <div class="stat"><b id="destStat">app</b><span>destination</span></div>
+      </div>
+      <div class="notice">Best default now: put UTM links on YouTube bio, every video description, pinned comments, Kit emails, and WhatsApp/manual follow-ups. Direct X/IG/TikTok links are only needed when they link straight to the application instead of YouTube.</div>
+      <div id="results" class="empty">Choose placements and generate links.</div>
+    </section>
+  </main>
+
+<script>
+const placements = [
+  {id:'youtube_bio', group:'core', label:'YouTube channel bio', source:'youtube', medium:'bio', content:'channel_bio', where:'YouTube → channel profile links', note:'Use this as the main bio/profile link.'},
+  {id:'youtube_video_description', group:'core', label:'YouTube video description', source:'youtube', medium:'video_description', content:'video_{video}', where:'Every video description', note:'Use a different video/topic label per video.'},
+  {id:'youtube_pinned_comment', group:'core', label:'YouTube pinned comment', source:'youtube', medium:'pinned_comment', content:'video_{video}', where:'Pinned comment under each video', note:'Separates description clicks from comment clicks.'},
+  {id:'youtube_community', group:'core', label:'YouTube community post', source:'youtube', medium:'community', content:'post_{content}', where:'Community tab posts', note:'Use post topic/date as content.'},
+  {id:'kit_email', group:'core', label:'Kit/email sequence', source:'email', medium:'sequence', content:'email_{email}_{content}', where:'Kit sequence buttons and text links', note:'One content label per email so we know which email sold.'},
+  {id:'whatsapp_dm', group:'core', label:'WhatsApp manual follow-up', source:'whatsapp', medium:'dm', content:'manual_followup_{content}', where:'1:1 WhatsApp follow ups', note:'For warm manual messages after interest.'},
+  {id:'whatsapp_status', group:'extra', label:'WhatsApp status', source:'whatsapp', medium:'status', content:'status_{content}', where:'WhatsApp status link sticker/text', note:'Use if you post the direct application link.'},
+  {id:'skool_post', group:'extra', label:'Skool post/comment', source:'skool', medium:'community', content:'post_{content}', where:'Skool community posts/comments', note:'Only if approved to post/use link there.'},
+  {id:'x_direct', group:'extra', label:'X direct to application', source:'x', medium:'social', content:'post_{content}', where:'X bio/post when not routing to YouTube', note:'If X points to YouTube, do not use this for the app link.'},
+  {id:'instagram_direct', group:'extra', label:'Instagram direct to application', source:'instagram', medium:'social', content:'bio_or_story_{content}', where:'IG bio/story when not routing to YouTube', note:'If IG points to YouTube, YouTube links carry the app attribution.'},
+  {id:'tiktok_direct', group:'extra', label:'TikTok direct to application', source:'tiktok', medium:'social', content:'bio_{content}', where:'TikTok bio when not routing to YouTube', note:'If TikTok points to YouTube, do not double-count it as app source.'},
+  {id:'linkedin_direct', group:'extra', label:'LinkedIn direct to application', source:'linkedin', medium:'social', content:'profile_or_post_{content}', where:'LinkedIn profile/post', note:'Use for direct professional audience links.'},
+  {id:'qr_offline', group:'extra', label:'QR / offline', source:'offline', medium:'qr', content:'qr_{content}', where:'Slides, events, PDFs, QR codes', note:'Good for webinars or offline mentions.'}
+];
+const $ = id => document.getElementById(id);
+function slug(value, fallback='link'){
+  const s = String(value || '').trim().toLowerCase()
+    .replace(/&/g,' and ').replace(/[^a-z0-9\u0600-\u06FF]+/g,'_').replace(/^_+|_+$/g,'').slice(0,80);
+  return s || fallback;
+}
+function fillTemplate(t){
+  return t.replace('{video}', slug($('videoLabel').value || $('contentLabel').value, 'video'))
+    .replace('{email}', slug($('emailNo').value, '01'))
+    .replace('{content}', slug($('contentLabel').value, 'link'));
+}
+function makeUrl(p){
+  const url = new URL($('baseUrl').value.trim() || 'https://osama-alkalthami.com/application');
+  url.searchParams.set('utm_source', p.source);
+  url.searchParams.set('utm_medium', p.medium);
+  url.searchParams.set('utm_campaign', slug($('campaign').value, 'atmtha_launch'));
+  url.searchParams.set('utm_content', fillTemplate(p.content));
+  const term = slug($('customTerm').value, '');
+  if (term) url.searchParams.set('utm_term', term);
+  return url.toString();
+}
+function renderChips(){
+  for (const group of ['core','extra']){
+    const box = $(group+'Placements');
+    box.innerHTML = placements.filter(p=>p.group===group).map(p=>`<label class="chip"><input type="checkbox" value="${p.id}" ${group==='core'?'checked':''}/><span><b>${p.label}</b><span>${p.where}</span></span></label>`).join('');
+  }
+}
+function selected(){
+  return [...document.querySelectorAll('.chip input:checked')].map(i=>placements.find(p=>p.id===i.value)).filter(Boolean);
+}
+async function copy(text){ await navigator.clipboard.writeText(text); }
+function generate(){
+  const picks = selected();
+  $('countLinks').textContent = picks.length;
+  $('countSources').textContent = new Set(picks.map(p=>p.source)).size;
+  $('campaignStat').textContent = slug($('campaign').value, 'atmtha_launch').replace('atmtha_','');
+  $('destStat').textContent = new URL($('baseUrl').value || 'https://osama-alkalthami.com/application').pathname.includes('application') ? 'app' : 'custom';
+  if(!picks.length){ $('results').className='empty'; $('results').textContent='Choose placements and generate links.'; return; }
+  $('results').className='';
+  $('results').innerHTML = picks.map(p=>{
+    const url = makeUrl(p);
+    return `<article class="result">
+      <div class="result-head"><div><strong>${p.label}</strong><div class="why">Add it here: ${p.where}</div></div><span class="badge">${p.source} / ${p.medium}</span></div>
+      <div class="url">${url}</div>
+      <div class="actions"><button class="copy" data-copy="${encodeURIComponent(url)}">Copy link</button><button class="ghost" data-open="${encodeURIComponent(url)}">Open</button></div>
+      <div class="why">${p.note}</div>
+    </article>`;
+  }).join('');
+}
+document.addEventListener('click', e=>{
+  const copyBtn = e.target.closest('[data-copy]');
+  if(copyBtn){ copy(decodeURIComponent(copyBtn.dataset.copy)); copyBtn.textContent='Copied'; setTimeout(()=>copyBtn.textContent='Copy link',1000); }
+  const openBtn = e.target.closest('[data-open]');
+  if(openBtn) window.open(decodeURIComponent(openBtn.dataset.open),'_blank');
+  const selectBtn = e.target.closest('[data-select]');
+  if(selectBtn){ document.querySelectorAll(`#${selectBtn.dataset.select}Placements input`).forEach(i=>i.checked=true); generate(); }
+});
+$('generateBtn').addEventListener('click', generate);
+$('copyAllTop').addEventListener('click', async()=>{
+  const text = selected().map(p=>`${p.label}\n${makeUrl(p)}`).join('\n\n');
+  if(text) await copy(text);
+  $('copyAllTop').textContent='Copied all'; setTimeout(()=>$('copyAllTop').textContent='Copy all links',1000);
+});
+['baseUrl','campaign','contentLabel','videoLabel','emailNo','customTerm'].forEach(id=>$(id).addEventListener('input', generate));
+renderChips(); generate();
+</script>
+</body>
+</html>
